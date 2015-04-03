@@ -1,0 +1,33 @@
+<form class="form-horizontal col-lg-6">
+  <fieldset>
+    <legend>Login</legend>
+    {{#if showError}}
+		<div class="alert alert-dismissible alert-danger">
+		{{#if errors.username}}
+			{{errors.username}}<br/>
+		{{/if}}
+		{{#if errors.password}}
+			{{errors.password}}<br/>
+		{{/if}}
+		</div>
+	{{/if}}
+    <div class="form-group" {{bind-attr class="errors.username.firstObject:has-error" }}>
+      <label for="username" class="col-lg-2 control-label">Username</label>
+      <div class="col-lg-10">
+        {{input type="text" class="form-control" id="username" property="username" value=username placeholder="Username"}}
+      </div>
+    </div>
+    <div class="form-group" {{bind-attr class="errors.password.firstObject:has-error" }}>
+      <label for="password" class="col-lg-2 control-label">Password</label>
+      <div class="col-lg-10">
+        {{input type="password" class="form-control" id="password" property="password" value=password placeholder="Password"}}
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="submit" class="btn btn-primary" {{action 'login'}}>Submit</button>
+        <button type="reset" class="btn btn-default" {{action 'cancel'}}>Cancel</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
